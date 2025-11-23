@@ -1,4 +1,3 @@
-# train_model.py
 import numpy as np
 import pandas as pd
 from sklearn.ensemble import RandomForestRegressor
@@ -6,12 +5,11 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_absolute_error, r2_score
 import joblib
 
-# reproducibilitate
 np.random.seed(42)
 n_samples = 3000
 
 # 1. Generăm date sintetice pentru strunjire aluminiu
-# Parametri inspirați din domenii reale de lucru pentru Al
+# Parametri inspirați din domenii reale de lucru pentru Aluminiu
 data = pd.DataFrame({
     # rating intern 1–5: număr operații, setup-uri, suprafețe critice, toleranțe strânse
     "part_complexity": np.random.randint(1, 6, size=n_samples),
@@ -110,10 +108,9 @@ print(f"MAE: {mae:.2f} sec")
 print(f"R² : {r2:.3f}")
 print("=================================================")
 
-# 8. Salvăm modelul și feature names
 joblib.dump(
     {"model": model, "feature_names": list(X.columns)},
     "model.pkl"
 )
 
-print("✅ Model salvat în model.pkl")
+print("Model salvat în model.pkl")
